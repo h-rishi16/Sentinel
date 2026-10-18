@@ -12,11 +12,11 @@
 
 ---
 
-## 🌐 Live Cloud Deployment
+## Live Cloud Deployment
 
 Experience the live, interactive terminal and API documentation:
-- **Live Terminal Dashboard:** [https://sentinel-risk-platform.onrender.com/](https://sentinel-risk-platform.onrender.com/)
-- **Interactive OpenAPI / Swagger Documentation:** [https://sentinel-risk-platform.onrender.com/docs](https://sentinel-risk-platform.onrender.com/docs)
+- **Live Terminal Dashboard:** [Sentinel](https://sentinel-risk-platform.onrender.com/)
+- **Interactive OpenAPI / Swagger Documentation:** [Docs](https://sentinel-risk-platform.onrender.com/docs)
 
 ---
 
@@ -30,7 +30,7 @@ Experience the live, interactive terminal and API documentation:
 * **Obligor 360:** A unified, cross-engine entity search that aggregates an individual borrower's credit, fraud, and exposure risks into a single pane of glass.
 * **Data Forge:** Synthetic data generation pipeline capable of rapidly seeding millions of rows of correlated, stressed financial data for backtesting.
 
-> 📖 **Mathematical Architecture:** Want to know exactly how the underlying math and architecture work? [Read the technical guide](HOW_IT_WORKS.md).
+> **Mathematical Architecture:** Want to know exactly how the underlying math and architecture work? [Read the technical guide](HOW_IT_WORKS.md).
 
 ---
 
