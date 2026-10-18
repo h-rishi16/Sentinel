@@ -1,44 +1,63 @@
 # Sentinel Risk Intelligence Platform
 
-![Python](https://img.shields.io/badge/Python-3.13-blue.svg)
+[![CI](https://github.com/h-rishi16/Sentinel/actions/workflows/ci.yml/badge.svg)](https://github.com/h-rishi16/Sentinel/actions)
+![Python 3.11+](https://img.shields.io/badge/Python-3.11+-blue.svg)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.103.2-009688.svg)
 ![HTMX](https://img.shields.io/badge/HTMX-1.9.10-3D72D7.svg)
 ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC.svg)
 ![XGBoost](https://img.shields.io/badge/XGBoost-Enabled-orange.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-**Sentinel** is a high-performance, quantitative risk management and surveillance terminal. It provides a unified platform for real-time fraud detection, credit risk modeling, market volatility forecasting, and systemic stress testing, natively integrated with an HTMX + Tailwind dashboard.
+**Sentinel** is a high-performance, quantitative risk management and surveillance terminal. It provides a unified platform for real-time fraud detection, credit risk modeling, market volatility forecasting, and systemic stress testing, natively integrated with an interactive HTMX + Tailwind CSS dark-mode dashboard.
+
+---
+
+## 🌐 Live Cloud Deployment
+
+Experience the live, interactive terminal and API documentation:
+- **Live Terminal Dashboard:** [https://sentinel-risk-platform.onrender.com/](https://sentinel-risk-platform.onrender.com/)
+- **Interactive OpenAPI / Swagger Documentation:** [https://sentinel-risk-platform.onrender.com/docs](https://sentinel-risk-platform.onrender.com/docs)
+
+---
 
 ## Key Risk Engines
 
-*   **Transaction Surveillance (Fraud):** Real-time XGBoost classifier identifying fraudulent behavior utilizing temporal velocity, amount Z-scores, and categorical encoding.
-*   **Loan Default Engine (Credit Risk):** Probability of Default (PD) and Expected Loss (EL) calculations leveraging decision trees on borrower credit data (FICO, DTI).
-*   **Portfolio Value at Risk (Market Risk):** 99% VaR and Expected Shortfall calculations utilizing Monte Carlo simulations with Kupiec POF backtesting validation.
-*   **Volatility Surface:** Long-run annualized volatility forecasting using GARCH(1,1) Maximum Likelihood Estimation (MLE) and Exponentially Weighted Moving Averages (EWMA).
-*   **Scenario Analysis (Stress Testing):** Shock absorption simulations for historical crises (e.g., 2008 GFC, 2022 Rate Shocks) and hypothetical sector crashes.
-*   **Obligor 360:** A unified, cross-engine entity search that aggregates an individual borrower's credit, fraud, and exposure risks into a single pane of glass.
-*   **Data Forge:** Synthetic data generation pipeline capable of rapidly seeding millions of rows of correlated, stressed financial data for backtesting.
+* **Transaction Surveillance (Fraud Detection):** Real-time XGBoost classifier identifying fraudulent behavior utilizing temporal velocity, amount Z-scores, and categorical encoding.
+* **Loan Default Engine (Credit Risk):** Probability of Default (PD) and Expected Loss (EL) calculations leveraging decision trees on borrower credit profiles (FICO, DTI).
+* **Portfolio Value at Risk (Market Risk):** 99% VaR and Expected Shortfall (CVaR) calculations utilizing Monte Carlo simulations with Kupiec POF backtesting validation.
+* **Volatility Surface:** Long-run annualized volatility forecasting using GARCH(1,1) Maximum Likelihood Estimation (MLE) and RiskMetrics EWMA ($\lambda=0.94$).
+* **Scenario Analysis (Stress Testing):** Shock absorption simulations for historical crises (2008 GFC, 2022 Rate Shocks) and hypothetical sector crashes.
+* **Obligor 360:** A unified, cross-engine entity search that aggregates an individual borrower's credit, fraud, and exposure risks into a single pane of glass.
+* **Data Forge:** Synthetic data generation pipeline capable of rapidly seeding millions of rows of correlated, stressed financial data for backtesting.
 
-Want to know exactly how the math and architecture work? [Read here](HOW_IT_WORKS.md).
+> 📖 **Mathematical Architecture:** Want to know exactly how the underlying math and architecture work? [Read the technical guide](HOW_IT_WORKS.md).
 
-## Limitations
+---
+
+## Limitations & Disclaimer
 
 > **Synthetic Data Disclaimer:** Sentinel uses synthetic financial data for demonstration and testing purposes. Model performance should not be interpreted as production performance on real-world banking data. Synthetic data may contain assumptions and patterns that make prediction easier than in real financial environments.
 
+---
+
 ## Architecture & Tech Stack
 
-Sentinel is built to prioritize accuracy, speed, and clean UX without relying on heavy frontend frameworks:
+Sentinel is built to prioritize mathematical accuracy, low-latency execution, and responsive UX without heavy client-side frameworks:
 
-*   **Backend:** Python 3, FastAPI, SQLAlchemy
-*   **Quantitative Modeling:** Pandas, Scikit-Learn, XGBoost, SciPy, Arch
-*   **Frontend:** HTMX (Server-Side UI rendering), Tailwind CSS (Dark Mode supported), Lucide Icons
-*   **Database:** SQLite (Embedded relational database (Production path: PostgreSQL))
+* **Backend & API:** Python 3.11+, FastAPI, SQLAlchemy, Uvicorn
+* **Quantitative Modeling:** Pandas, Scikit-Learn, XGBoost, SciPy, Arch, PyArrow
+* **Frontend:** HTMX (Server-Side UI rendering), Tailwind CSS (Dark Mode supported), Lucide Icons
+* **Database:** SQLite (Embedded relational storage; production path: PostgreSQL)
+* **DevOps & CI/CD:** Docker, GitHub Actions (automated Ruff linting + Pytest suite)
 
-## Installation & Setup
+---
+
+## Local Installation & Setup
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/h-rishi16/sentinel.git
-   cd sentinel
+   git clone https://github.com/h-rishi16/Sentinel.git
+   cd Sentinel
    ```
 
 2. **Set up a virtual environment and install dependencies:**
@@ -53,17 +72,21 @@ Sentinel is built to prioritize accuracy, speed, and clean UX without relying on
    ```bash
    python scripts/seed_db.py 1000 5000 20000 0.002 0.0 normal normal
    ```
-   *(Or simply run the application and use the **Data Forge** UI to generate a dataset).*
+   *(Or simply launch the application and use the **Data Forge** UI tab to generate datasets interactively).*
 
-## Running the Application
+---
 
-Start the FastAPI ASGI server using Uvicorn:
+## Running the Application Locally
+
+Start the FastAPI ASGI server with Uvicorn:
 
 ```bash
 uvicorn sentinel.api.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-Then open your browser and navigate to: [Sentinel](https://sentinel-risk-platform.onrender.com/)
+Then open your browser and navigate to: **[http://localhost:8000](http://localhost:8000)**
+
+---
 
 ## License
 
