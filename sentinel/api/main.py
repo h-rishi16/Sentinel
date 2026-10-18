@@ -191,7 +191,7 @@ def get_base_html(content: str, active_tab: str, breadcrumb: str):
 
 # --- 2. ROOT & TICKER ---
 
-@app.get("/")
+@app.get("/", response_class=HTMLResponse)
 def root(request: Request, db: Session = Depends(get_db)):
     return view_home(request, db)
 
