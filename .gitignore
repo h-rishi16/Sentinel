@@ -26,6 +26,7 @@ Thumbs.db
 # Data files (large)
 data/raw/*.csv
 data/raw/*.parquet
+!data/raw/prices.parquet
 data/processed/*.parquet
 
 # Environment

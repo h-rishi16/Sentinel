@@ -32,6 +32,13 @@ async def lifespan(app: FastAPI):
         with open(meta_path, "w") as f:
             json.dump({"type": "synthetic", "desc": "Default Seed (Medium | Normal Baseline | 0.2% Fraud)"}, f)
 
+    # Initialize market price data if it doesn't exist
+    try:
+        from sentinel.data.market import load_prices
+        load_prices()
+    except Exception as e:
+        logger.warning(f"Market price initialization note: {e}")
+
     yield
 
 app = FastAPI(title="Sentinel Risk Intelligence API", lifespan=lifespan)
