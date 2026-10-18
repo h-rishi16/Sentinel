@@ -10,10 +10,12 @@
 # BLE001 - Blind exception catch: acceptable in example scripts
 # PIE790 - Unnecessary pass: used as explicit placeholder in abstract-style base classes
 # ASYNC230/ASYNC221 - Blocking calls in async: accepted for now (SQLite + file I/O)
-ignore = ["E501", "N803", "N806", "E741", "B008", "BLE001", "PIE790", "ASYNC230", "ASYNC221"]
+# E701 - Multiple statements on one line (inline conditionals)
+# E712 - Equality comparison to True/False in assertions
+ignore = ["E501", "N803", "N806", "E741", "B008", "BLE001", "PIE790", "ASYNC230", "ASYNC221", "E701", "E712"]
 
 [lint.per-file-ignores]
 # Example scripts have relaxed rules
-"examples/*" = ["I001", "RUF059", "RUF010"]
+"examples/*" = ["I001", "RUF059", "RUF010", "E402"]
 # Test files use sklearn conventions and documentary variables
 "tests/*" = ["N803", "N806"]

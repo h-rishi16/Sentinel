@@ -130,7 +130,7 @@ def run_rolling_backtest(
             tail = hist_port_pnls[hist_port_pnls <= -var_pred]
             es_pred = -tail.mean() if len(tail) > 0 else var_pred
 
-        elif method == "monte_carlo":
+        elif method in ("monte_carlo", "gbm"):
             config = SimulationConfig(n_simulations=10_000, time_horizon=1, random_seed=42 + i)
             sim = simulate_from_historical(train_returns, portfolio.weight_array, config)
             var_pred = compute_var(sim.portfolio_pnl, confidence_level)

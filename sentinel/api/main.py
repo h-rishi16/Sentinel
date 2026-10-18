@@ -1124,6 +1124,8 @@ def view_market(request: Request):
 async def train_market(request: Request):
     form = await request.form()
     method = form.get("method", "monte_carlo")
+    if method == "gbm":
+        method = "monte_carlo"
     confidence_level = float(form.get("confidence_level", 0.95))
     window_size = int(form.get("window_size", 252))
     portfolio_value = float(form.get("portfolio_value", 1_000_000))
